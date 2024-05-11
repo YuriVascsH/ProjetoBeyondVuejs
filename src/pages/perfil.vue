@@ -50,11 +50,22 @@
                   >
                   </v-text-field>
 
-                  <v-row class="botao">
-                    <v-btn width="200px" type="submit" color="primary"
+                  <v-card-actions class="botao">
+                    <v-btn
+                      @click="criarcc"
+                      width="200px"
+                      type="submit"
+                      color="primary"
+                      >Criar Conta</v-btn
+                    >
+                    <v-btn
+                      @click="login"
+                      width="200px"
+                      type="submit"
+                      color="primary"
                       >Login</v-btn
                     >
-                  </v-row>
+                  </v-card-actions>
                 </v-form>
               </v-card>
               <!-- Coluna para o formulário de login -->
@@ -77,7 +88,18 @@ export default {
   },
   methods: {
     login() {
-      // Implemente sua lógica de login aqui
+      this.$store.dispatch("login", {
+        email: this.email,
+        password: this.password,
+      });
+      this.$route.push("/calender");
+    },
+
+    createcc() {
+      this.$store.dispatch("create", {
+        email: this.email,
+        password: this.password,
+      });
     },
   },
 };

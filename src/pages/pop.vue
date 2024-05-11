@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <v-app>
     <v-dialog
       v-model="dialog"
@@ -27,4 +27,4 @@
       </v-card>
     </v-dialog>
   </v-app>
-</template>
+</template> -->
