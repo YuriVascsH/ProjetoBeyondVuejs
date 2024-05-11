@@ -84,7 +84,6 @@
     <v-list-item>
       <v-list-item-title>Consultoria de Carreira</v-list-item-title>
     </v-list-item>
-
   </v-list>   
         
 
