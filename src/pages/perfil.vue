@@ -14,14 +14,19 @@
               <!-- Conteúdo da coluna aqui -->
               <img src="../assets/pop.png" alt="Imagem de login" />
             </v-col>
+
             <v-col cols="6">
-              <v-row justify="end">
-                <v-btn icon @click="dialog = false">
-                  <v-icon>mdi-close</v-icon>
-                </v-btn>
-              </v-row>
-              <!-- Coluna para o formulário de login -->
-              <v-container class="login">
+              <v-card flat>
+                <v-row justify="end">
+                  <v-btn icon @click="dialog = false">
+                    <v-icon>mdi-close</v-icon>
+                  </v-btn>
+                </v-row>
+
+                <v-card-text>
+                  <h2 class="text-center">Login</h2>
+                  <h4 class="text-center">Bem vindo novamente</h4>
+                </v-card-text>
                 <v-form @submit.prevent="login">
                   <v-text-field
                     v-model="email"
@@ -29,6 +34,12 @@
                     filled
                     required
                   ></v-text-field>
+                  <v-select
+                    :items="items"
+                    filled
+                    label="Instituição de ensino"
+                    dense
+                  ></v-select>
 
                   <v-text-field
                     v-model="password"
@@ -36,16 +47,17 @@
                     type="password"
                     filled
                     required
-                  ></v-text-field>
-                  <v-btn
-                    class="botao"
-                    width="150px"
-                    type="submit"
-                    color="primary"
-                    >Login</v-btn
                   >
+                  </v-text-field>
+
+                  <v-row class="botao">
+                    <v-btn width="200px" type="submit" color="primary"
+                      >Login</v-btn
+                    >
+                  </v-row>
                 </v-form>
-              </v-container>
+              </v-card>
+              <!-- Coluna para o formulário de login -->
             </v-col>
           </v-row>
         </v-container>
@@ -84,7 +96,45 @@ export default {
 
 .botao {
   display: flex;
-  text-allign: center;
   justify-content: center;
 }
 </style>
+
+/* Versão Antiga */ /*
+<v-container class="login">
+  <v-card>
+    <v-card-title class="headline text-center"
+      >Login</v-card-title
+    >
+    <v-form @submit.prevent="login">
+      <v-text-field
+        v-model="email"
+        label="Email"
+        filled
+        required
+      ></v-text-field>
+      <v-select
+        :items="items"
+        filled
+        label="Instituição de ensino"
+        dense
+      ></v-select>
+
+      <v-text-field
+        v-model="password"
+        label="Senha"
+        type="password"
+        filled
+        required
+      >
+      </v-text-field>
+
+      <v-row class="botao">
+        <v-btn width="200px" type="submit" color="primary"
+          >Login</v-btn
+        >
+      </v-row>
+    </v-form>
+  </v-card>
+</v-container>
+*/
