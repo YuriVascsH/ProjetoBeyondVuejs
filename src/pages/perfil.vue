@@ -21,34 +21,31 @@
                 </v-btn>
               </v-row>
               <!-- Coluna para o formulário de login -->
-              <v-form @submit.prevent="login">
-                <v-text-field
-                  v-model="email"
-                  label="Email"
-                  required
-                ></v-text-field>
-                <v-text-field
-                  v-model="password"
-                  label="Senha"
-                  type="password"
-                  required
-                ></v-text-field>
-                <p>OLa</p>
-                <p>OLa</p>
-                <p>OLa</p>
-                <p>OLa</p>
-                <p>OLa</p>
-                <p>OLa</p>
-                <p>OLa</p>
-                <p>OLa</p>
-                <p>OLa</p>
-                <p>OLa</p>
-                <p>OLa</p>
-                <p>OLa</p>
-                <p>OLa</p>
+              <v-container class="login">
+                <v-form @submit.prevent="login">
+                  <v-text-field
+                    v-model="email"
+                    label="Email"
+                    filled
+                    required
+                  ></v-text-field>
 
-                <v-btn type="submit" color="primary">Login</v-btn>
-              </v-form>
+                  <v-text-field
+                    v-model="password"
+                    label="Senha"
+                    type="password"
+                    filled
+                    required
+                  ></v-text-field>
+                  <v-btn
+                    class="botao"
+                    width="150px"
+                    type="submit"
+                    color="primary"
+                    >Login</v-btn
+                  >
+                </v-form>
+              </v-container>
             </v-col>
           </v-row>
         </v-container>
@@ -73,3 +70,21 @@ export default {
   },
 };
 </script>
+
+<style>
+.v-text-field {
+  width: 400px;
+}
+
+.login {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.botao {
+  display: flex;
+  text-allign: center;
+  justify-content: center;
+}
+</style>
