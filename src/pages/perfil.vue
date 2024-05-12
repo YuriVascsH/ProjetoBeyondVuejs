@@ -1,3 +1,38 @@
+<!-- Código novo -->
+<template>
+  <v-app>
+    <h1>Create An Account</h1>
+    <p><input type="text" placeholder="Email" v-model="email" /></p>
+    <p><input type="password" placeholder="Password" v-model="password" /></p>
+    <p><button @click="register">Submit</button></p>
+    <p><button @click="signInWithGoogle">Sign In with Google</button></p>
+  </v-app>
+</template>
+
+<script setup>
+import { ref } from "vue";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import router from "@/router/router";
+const email = ref("");
+const password = ref("");
+const register = () => {
+  createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+    .then(() => {
+      console.log("Registro sucesso");
+      router.push("/calender");
+    })
+    .catch((error) => {
+      console.log(error.code);
+      alert(error.message);
+    });
+};
+
+const signInWithGoogle = () => {};
+</script>
+<!-- Fim do código novo -->
+
+
+
 <template>
   <div>
     <v-btn @click="dialog = true">Login</v-btn>
