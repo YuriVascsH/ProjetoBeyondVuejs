@@ -4,6 +4,7 @@
     <h1>Create An Account</h1>
     <p><input type="text" placeholder="Email" v-model="email" /></p>
     <p><input type="password" placeholder="Password" v-model="password" /></p>
+    <p v-if="errMsg">{{ errMsg }}</p>
     <p><button @click="register">Submit</button></p>
     <p><button @click="signInWithGoogle">Sign In with Google</button></p>
   </v-app>
@@ -11,14 +12,14 @@
 
 <script setup>
 import { ref } from "vue";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, SignInWithEmailAndPassword } from "firebase/auth";
 import router from "@/router/router";
 const email = ref("");
 const password = ref("");
 const register = () => {
-  createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+  SignInWithEmailAndPassword(getAuth(), email.value, password.value)
     .then(() => {
-      console.log("Registro sucesso");
+      console.log("Sucesso na login");
       router.push("/calender");
     })
     .catch((error) => {
