@@ -54,7 +54,11 @@
                     <v-card-title>
                       <span class="text-h5">Adicionar novo Material</span>
                     </v-card-title>
-  
+                    //inicio
+                    //Deslogar
+                    <button @click="handleSignOut" v-if="isLoggedIn">Sign Out</button>
+                    //fim
+                      
                     <v-card-text>
                       <v-container>
                         <v-row>
