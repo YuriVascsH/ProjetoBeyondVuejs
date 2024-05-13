@@ -116,5 +116,29 @@ export default {
       this.close()
     },
   },
+  //Inicio do novo codigo
+// Comando para sair da conta
+  import { onMouted, ref } from "vue"
+  import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+  
+  let auth;
+  onMouted(() => {
+     auth = getAuth();
+     onAuthStateChanged(auth, (user) => {
+        if (user) {
+          isLoggedIn.value = true;
+        } else {
+          isLoggedIn.value = false;
+        }
+     })
+  })
+  
+  const handleSignOut = () => {
+    signOut(auth).then(() => {
+      router.push("/");
+    });
+  },
+  // fim do noco código
+
   
 }
