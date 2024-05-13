@@ -21,6 +21,11 @@ const routes = [
   {
     path: "/calender",
     component: calender,
+     // Nova parte do código
+    meta: {
+      requiresAuth: true,
+    },
+    //fim da nova parte
   },
 
   {
@@ -32,5 +37,32 @@ const routes = [
 const router = new VueRouter({
   routes,
 });
+
+//Nova parte do código 
+
+const getCurrentUser = () => {
+  return new promise((resolve, reject) => {
+    const removeListener = onAuthStateChanged(
+      getAuth(),
+      (user) => {
+        removeListener();
+        resolve(user);
+      },
+    reject
+  );
+  })
+};
+
+router.beforeEach(async(to, from, next) =>{
+  if(to.matched.some((record) => record.meta.requiresAuth)) {
+    if(await currentUser) {
+      next();
+    } else {
+      alert("Você não tem acesso")
+      next("/");
+    }
+  }
+});
+//fim dda nova parte
 
 export default router;
